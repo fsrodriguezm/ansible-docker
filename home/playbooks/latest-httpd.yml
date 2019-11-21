@@ -1,0 +1,37 @@
+---
+- hosts: servers
+  tasks:
+  - name: latest httpd installed
+    yum:
+      name: httpd
+      state: latest
+    notify:
+      - restart httpd
+  - name: create index.html file
+    file:
+      name: /var/www/html/index.html
+      state: touch
+  - name: add web content
+    lineinfile:
+      line: <h1>Hello World!</h1>
+      path: /var/www/html/index.html
+  - name: start httpd service
+    service:
+      name: httpd
+      state: started
+  handlers:
+  - name: attempt to start httpd
+    service:
+      name: httpd
+      state: restarted
+    listen: "restart httpd"
+ 
+- hosts: servers
+  vars:
+    psql_target_state: absent
+  remote_user: root
+  tasks:
+    - name: latest postgresql installed
+      yum:
+        name: postgresql
+        state: "{{ psql_target_state }}"
