@@ -1,0 +1,40 @@
+version: "3.7"
+services:
+  c-host:
+    build: .
+    container_name: c-host
+    volumes:
+      - /Users/surfersamu/Documents/Docker/ansible/home/:/root
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /Users/surfersamu/.ssh/id_rsa:/root/.ssh/id_rsa
+      - /Users/surfersamu/.vimrc:/root/.vimrc:ro
+    privileged: true
+    ports:
+      - "32:22"
+    networks:
+      - ans-1
+  r-host-1:
+    build: .
+    container_name: r-host-1
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /Users/surfersamu/.ssh/id_rsa.pub:/root/.ssh/authorized_keys
+    privileged: true
+    ports:
+      - "33:22"
+    networks:
+      - ans-1
+  r-host-2:
+    build: .
+    container_name: r-host-2
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /Users/surfersamu/.ssh/id_rsa.pub:/root/.ssh/authorized_keys
+    privileged: true
+    ports:
+      - "34:22"
+    networks:
+      - ans-1
+
+networks:
+  ans-1:
