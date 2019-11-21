@@ -1,11 +1,14 @@
 # ansible-docker
 
-This Ansible playground has been set up with Docker images using centos7 latest image. systemd and sshd services are enbled. The creation of an ssh key is required in order for the ansible control node to communicate with the remote nodes. A docker-compose file is utilzed to bring up all three containers and mount the ssh key pairs in the necessary directory paths. 
+This Ansible playground has been set up with Docker images using centos7 latest image. systemd and sshd services are enbled. The creation of an ssh key is required in order for the ansible control node to communicate with the remote nodes. 
+
+A docker-compose file is utilzed to bring up all three containers and mount the ssh key pairs in their respective locations. 
 
 A Makefile is used for building the Docker image, bringing up the services and the removing a file `docker exec -it r-host-1 rm /run/nologin` because of Docker lac of tmpfs support.
-<br>
+<br><br>
 https://github.com/CentOS/sig-cloud-instance-images/issues/60
 
+### Nodes
 ```
 c-host: Control Node
 r-host-1: Remote Node
