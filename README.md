@@ -4,7 +4,7 @@ This Ansible playground has been set up with Docker images using centos7 latest 
 
 A docker-compose file is utilzed to bring up all three containers and mount the ssh key pairs in their respective locations. 
 
-A Makefile is used for building the Docker image, bringing up the services and the removing a file `docker exec -it r-host-1 rm /run/nologin` because of Docker lac of tmpfs support.
+A Makefile is used for building the Docker image, bringing up the services and the removal a file `docker exec -it r-host-1 rm /run/nologin` because of Docker lack of tmpfs support.
 <br><br>
 https://github.com/CentOS/sig-cloud-instance-images/issues/60
 
