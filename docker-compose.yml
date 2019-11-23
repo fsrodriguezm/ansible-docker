@@ -6,7 +6,7 @@ services:
     volumes:
       - /Users/surfersamu/Documents/Docker/ansible/home/:/root
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /Users/surfersamu/.ssh/id_rsa:/root/.ssh/id_rsa
+      - ./home/id_rsa:/root/.ssh/id_rsa
       - /Users/surfersamu/.vimrc:/root/.vimrc:ro
     privileged: true
     ports:
@@ -18,7 +18,7 @@ services:
     container_name: r-host-1
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /Users/surfersamu/.ssh/id_rsa.pub:/root/.ssh/authorized_keys
+      - ./home/id_rsa.pub:/root/.ssh/authorized_keys
     privileged: true
     ports:
       - "33:22"
@@ -29,7 +29,7 @@ services:
     container_name: r-host-2
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
-      - /Users/surfersamu/.ssh/id_rsa.pub:/root/.ssh/authorized_keys
+      - ./home/id_rsa.pub:/root/.ssh/authorized_keys
     privileged: true
     ports:
       - "34:22"

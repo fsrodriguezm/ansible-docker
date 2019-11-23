@@ -1,2 +1,3 @@
 home/.*
+home/id_rsa*
 home/**/*retry
